@@ -1992,10 +1992,6 @@ HEADER
   box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.1);
 }
 
-.navbar-fixed.navbar-main {
-  background-color: rgba(1, 119, 215, 0.9);
-}
-
 .js-global-header-scrolling {
   top: -62px;
   /* Height of the header */
