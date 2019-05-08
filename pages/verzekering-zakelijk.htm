@@ -1,0 +1,27 @@
+title = "Verzekering Zakelijk"
+url = "/verzekeringen/zakelijk/verzekering/:slug"
+layout = "default"
+description = "Verzekering Zakelijk"
+meta_title = "Verzekering Zakelijk"
+is_hidden = 0
+robot_index = "index"
+robot_follow = "follow"
+
+[viewBag]
+==
+<?php
+use bsbvolmachten\verzekeringen\Models\Zakelijk;
+
+function onStart(){
+    $slug = $this->param('slug');
+    $verzekering = Zakelijk::where('slug' , $slug)->where('fullswitch', true)->first();
+    if ($verzekering == null) {
+    	return Redirect::to('/verzekeringen');
+    }
+}
+
+?>
+==
+<div class="page-content services-detail-1">
+	{% partial 'page/verzekering' %}
+</div>

@@ -1,0 +1,120 @@
+[viewBag]
+==
+<section class="contact contact-layout style-3">
+	<div class="main-contact">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8">
+					<form class="form-item flexiContactForm contact-form" role="form" data-request="{{ contactForm }}::onMailSent" data-request-update="'{{ contactForm }}::confirm': '.confirm-container'">
+						<div class="heading">
+							<h3>Neem contact op</h3>
+						</div>
+						<div class="input-group">
+							<input type="hidden" name="website" value="{{ this.theme.naam }}">
+						</div>
+						<div class="input-group">
+							<div class="input">
+								<input type="text" name="name" placeholder="Uw Naam" required />
+							</div>
+							<div class="input">
+								<input type="email" name="email" placeholder="Uw Email" required />
+							</div>
+							<div class="input">
+								<input type="tel" name="phone" placeholder="Uw Telefoonnummer" required />
+							</div>
+						</div>
+						<div class="input-group">
+							<div class="text-area">
+								<input type="text" name="subject" placeholder="Onderwerp" required />
+							</div>
+						</div>
+						<div class="text-area">
+							<textarea placeholder="Uw Bericht" name="body" required></textarea>
+						</div>
+                        {% if contactForm.enableCaptcha %}
+                            <div class="text-area">
+                                <div class="g-recaptcha" data-sitekey="{{ contactForm.siteKey }}"></div>
+                            </div>
+                        {% endif %}
+						<div class="action-group">
+							<button class="au-btn au-btn-default au-btn-lg" type="submit">Verzenden</button>
+						</div>
+					</form>
+				</div>
+                <div class="col-md-8" id='mail_success'>
+                    <div class="confirm-container">
+                        <div class='success'><h3>Uw bericht is succesvol verstuurd, wij zullen spoedig reageren!</h3></div>
+                    </div>
+                </div>
+				<div class="col-md-4">
+					<div class="contact-info">
+						<div class="heading">
+							<h3>Contact Informatie</h3>
+						</div>
+						<ul class="contact-list">
+							{% if this.theme.straat or this.theme.postcode or this.theme.woonplaats %}
+								<li>
+									<i class="fa fa-home"></i>{{ this.theme.straat }} {{ this.theme.postcode }} {{ this.theme.woonplaats }}
+								</li>
+							{% endif %}
+							{% if this.theme.location %}
+								<li>
+									<i class="fa fa-map-marker"></i><a target="_blank" href="{{ this.theme.location }}">Open in Google Maps</a>
+								</li>
+							{% endif %}
+							{% if this.theme.telefoon %}
+								<li>
+									<i class="fa fa-phone"></i><a href="tel:{{ this.theme.telefoon }}">{{ this.theme.telefoon }}</a>
+								</li>
+							{% endif %}
+							{% if this.theme.fax %}
+								<li>
+									<i class="fa fa-fax"></i>{{ this.theme.fax }}
+								</li>
+							{% endif %}
+							{% if this.theme.email %}
+								<li>
+									<i class="fa fa-envelope"></i><a href="mailto:{{ html_email(this.theme.email) }}">{{ html_email(this.theme.email) }}</a>
+								</li>
+							{% endif %}
+						</ul>
+
+						<div class="heading">
+							<h3>Openingstijden</h3>
+						</div>
+					<ul class="contact-list">
+						<li>
+							<span class="day opening-time"><i class="fa fa-clock-o"></i><strong>Maandag:</strong></span>
+							<span class="time">{% if this.theme.ot_maandag %}{{ this.theme.ot_maandag }}{% else %}Gesloten{% endif %}</span>
+						</li>
+						<li>
+							<span class="day opening-time"><i class="fa fa-clock-o"></i><strong>Dinsdag:</strong></span>
+							<span class="time">{% if this.theme.ot_dinsdag %}{{ this.theme.ot_dinsdag }}{% else %}Gesloten{% endif %}</span>
+						</li>
+						<li>
+							<span class="day opening-time"><i class="fa fa-clock-o"></i><strong>Woensdag:</strong></span>
+							<span class="time">{% if this.theme.ot_woensdag %}{{ this.theme.ot_woensdag }}{% else %}Gesloten{% endif %}</span>
+						</li>
+						<li>
+							<span class="day opening-time"><i class="fa fa-clock-o"></i><strong>Donderdag:</strong></span>
+							<span class="time">{% if this.theme.ot_donderdag %}{{ this.theme.ot_donderdag }}{% else %}Gesloten{% endif %}</span>
+						</li>
+						<li>
+							<span class="day opening-time"><i class="fa fa-clock-o"></i><strong>Vrijdag:</strong></span>
+							<span class="time">{% if this.theme.ot_vrijdag %}{{ this.theme.ot_vrijdag }}{% else %}Gesloten{% endif %}</span>
+						</li>
+						<li>
+							<span class="day opening-time"><i class="fa fa-clock-o"></i><strong>Zaterdag:</strong></span>
+							<span class="time">{% if this.theme.ot_zaterdag %}{{ this.theme.ot_zaterdag }}{% else %}Gesloten{% endif %}</span>
+						</li>
+						<li>
+							<span class="day opening-time"><i class="fa fa-clock-o"></i><strong>Zondag:</strong></span>
+							<span class="time">{% if this.theme.ot_zondag %}{{ this.theme.ot_zondag }}{% else %}Gesloten{% endif %}</span>
+						</li>
+					</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

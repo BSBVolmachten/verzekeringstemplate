@@ -1,0 +1,27 @@
+title = "Verzekering Particulier"
+url = "/verzekeringen/particulier/verzekering/:slug"
+layout = "default"
+description = "Verzekering Particulier"
+meta_title = "Verzekering Particulier"
+is_hidden = 0
+robot_index = "index"
+robot_follow = "follow"
+
+[viewBag]
+==
+<?php
+use bsbvolmachten\verzekeringen\Models\Particulier;
+
+function onStart(){
+    $slug = $this->param('slug');
+    $verzekering = Particulier::where('slug' , $slug)->where('fullswitch', true)->first();
+    if ($verzekering == null) {
+    	return Redirect::to('/verzekeringen');
+    }
+}
+
+?>
+==
+<div class="page-content services-detail-1">
+	{% partial 'page/verzekering' %}
+</div>

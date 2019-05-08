@@ -1,0 +1,66 @@
+[viewBag]
+
+[staticMenu]
+code = "hoofd-menu"
+==
+<?php
+
+use bsbvolmachten\verzekeringen\Models\Particulier;
+use bsbvolmachten\verzekeringen\Models\Zakelijk;
+
+function onStart(){
+
+    $this['particuliercheck'] = Particulier::orderBy('sort_order', 'ASC')->first();
+    $this['zakelijkcheck'] = Zakelijk::orderBy('sort_order', 'ASC')->first();
+}
+?>
+==
+<nav id="mmenu">
+	<ul>
+		<li>
+			<a href="{{ 'home'|page }}">Home</a>
+		</li>
+		<li>
+			<a href="{{ 'over-ons'|page }}">Over Ons</a>
+		</li>
+		<li>
+			<a href="{{ 'verzekeringen'|page }}">Verzekeringen</a>
+			<ul>
+				{% if particuliercheck != '' and zakelijkcheck != '' %}
+					<li>
+						<a href="{{ 'verzekeringen'|page }}">Alle Verzekeringen</a>
+					</li>
+				{% endif %}
+				{% if particuliercheck != '' %}
+					<li>
+						<a href="{{ 'particulier'|page }}">Particulier</a>
+					</li>
+				{% endif %}
+				{% if zakelijkcheck != '' %}
+					<li>
+						<a href="{{ 'zakelijk'|page }}">Zakelijk</a>
+					</li>
+				{% endif %}
+			</ul>
+		</li>
+        {% for item in staticMenu.menuItems %}
+           {% if item.items %}
+               <li>
+                   <a {{ item.viewBag.isExternal ? 'target="_blank"' }} href="{{ item.url }}">{{ item.title }}</a>
+                   <ul>
+                       {% for subitem in item.items %}
+                            <li><a {{ subitem.viewBag.isExternal ? 'target="_blank"' }} href="{{ subitem.url }}">{{ subitem.title }}</a></li> 
+                       {% endfor %}
+                   </ul>
+               </li>
+           {% else %} 
+               <li>
+                   <a href="{{ item.url }}">{{ item.title }}</a>
+                </li>
+            {% endif %} 
+        {% endfor %}
+		<li>
+			<a href="{{ 'contact'|page }}">Contact</a>
+		</li>
+	</ul>
+</nav>

@@ -1,0 +1,93 @@
+[viewBag]
+==
+<?php
+use Cms\Classes\Page;
+use bsbvolmachten\verzekeringen\Models\Particulier;
+use bsbvolmachten\verzekeringen\Models\Zakelijk;
+
+function onStart(){
+
+    $this['verzekeringenparticulier'] = Particulier::orderBy('sort_order', 'ASC')->where('homeswitch', true)->get();
+
+    $this['verzekeringenzakelijk'] = Zakelijk::orderBy('sort_order', 'ASC')->get();
+
+}
+?>
+==
+{% if verzekeringenparticulier != '[]' %}
+    <section class="product product-layout style-3">
+        <div class="container">
+            <div class="heading">
+                <h3 class="heading-section">Particuliere Verzekeringen</h3>
+            </div>
+            <div class="sub-heading">
+                <span>U kunt bij ons terecht voor onder andere de volgende verzekeringen</span>
+            </div>
+            <div class="row">
+                {% for verzekering in verzekeringenparticulier %}
+                    <div class="col-md-4 col-sm-6">
+                        <div class="product-item style-2 match-item">
+                            <div class="icon">
+                                <i class="fa {{ verzekering.icon }}"></i>
+                            </div>
+                            <div class="title">
+                                {% if verzekering.fullswitch %}
+                                    <a href="{{ 'verzekering-particulier'|page({ slug: verzekering.slug }) }}">{{ verzekering.title }}</a>
+                                {% else %}
+                                    <span>{{ verzekering.title }}</span>
+                                {% endif %}
+                            </div>
+                            <div class="content">
+                                <p>{{ verzekering.short_desc }}</p>
+                            </div>
+                            {% if verzekering.fullswitch %}
+                                <div class="view-more">
+                                    <a href="{{ 'verzekering-particulier'|page({ slug: verzekering.slug }) }}">Lees meer</a>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endif %}
+
+{% if verzekeringenzakelijk != '[]' %}
+    <section class="product product-layout style-3">
+        <div class="container">
+            <div class="heading">
+                <h3 class="heading-section">Zakelijke Verzekeringen</h3>
+            </div>
+            <div class="sub-heading">
+                <span>U kunt bij ons terecht voor onder andere de volgende verzekeringen</span>
+            </div>
+            <div class="row">
+                {% for verzekering in verzekeringenzakelijk %}
+                    <div class="col-md-4 col-sm-6">
+                        <div class="product-item style-2 match-item">
+                            <div class="icon">
+                                <i class="fa {{ verzekering.icon }}"></i>
+                            </div>
+                            <div class="title">
+                                {% if verzekering.fullswitch %}
+                                    <a href="{{ 'verzekering-zakelijk'|page({ slug: verzekering.slug }) }}">{{ verzekering.title }}</a>
+                                {% else %}
+                                    <span>{{ verzekering.title }}</span>
+                                {% endif %}
+                            </div>
+                            <div class="content">
+                                <p>{{ verzekering.short_desc }}</p>
+                            </div>
+                            {% if verzekering.fullswitch %}
+                                <div class="view-more">
+                                    <a href="{{ 'verzekering-zakelijk'|page({ slug: verzekering.slug }) }}">Lees meer</a>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endif %}

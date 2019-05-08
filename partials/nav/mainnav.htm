@@ -1,0 +1,90 @@
+[viewBag]
+
+[staticMenu]
+code = "hoofd-menu"
+==
+<?php
+use bsbvolmachten\verzekeringen\Models\Particulier;
+use bsbvolmachten\verzekeringen\Models\Zakelijk;
+use bsbvolmachten\contentblocks\Models\Fullblocks;
+
+function onStart(){
+
+    $this['particuliercheck'] = Particulier::orderBy('sort_order', 'ASC')->first();
+    $this['zakelijkcheck'] = Zakelijk::orderBy('sort_order', 'ASC')->first();
+    $this['blocks'] = Fullblocks::orderBy('sort_order', 'ASC')->get();
+}
+?>
+==
+{% for page in blocks if page.pageid == 'hypotheken'|slice(0, 1) %}
+	{% set hypotheken = true %}
+{% endfor %}
+
+{% for page in blocks if page.pageid == 'pensioenen'|slice(0, 1) %}
+	{% set pensioenen = true %}
+{% endfor %}
+
+{% for page in blocks if page.pageid == 'financial-planning'|slice(0, 1) %}
+	{% set financialplanning = true %}
+{% endfor %}
+<div class="navbar-main">
+	<div class="container">
+		<div class="navbar-holder">
+			<a class="navbar-toggle collapsed" href="#mmenu">
+				<span class="sr-only">Navigatie</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</a>
+			<nav class="navbar-menu">
+				<ul class="menu">
+					<li>
+						<a href="{{ 'home'|page }}">Home</a>
+					</li>
+					<li>
+						<a href="{{ 'over-ons'|page }}">Over Ons</a>
+					</li>
+					<li class="dropdown">
+						<a href="{{ 'verzekeringen'|page }}">Verzekeringen</a>
+						<ul class="dropdown-menu">
+							{% if particuliercheck != '' and zakelijkcheck != '' %}
+							<li>
+								<a href="{{ 'verzekeringen'|page }}">Alle verzekeringen</a>
+							</li>
+							{% endif %}
+							{% if particuliercheck != '' %}
+							<li>
+								<a href="{{ 'particulier'|page }}">Particulier</a>
+							</li>
+							{% endif %}
+							{% if zakelijkcheck != '' %}
+							<li>
+								<a href="{{ 'zakelijk'|page }}">Zakelijk</a>
+							</li>
+							{% endif %}
+						</ul>
+					</li>
+                    {% for item in staticMenu.menuItems %}
+                       {% if item.items %}
+                           <li class="dropdown">
+                               <a {{ item.viewBag.isExternal ? 'target="_blank"' }} href="{{ item.url }}">{{ item.title }}</a>
+                               <ul class="dropdown-menu">
+                                   {% for subitem in item.items %}
+                                        <li><a {{ subitem.viewBag.isExternal ? 'target="_blank"' }} href="{{ subitem.url }}">{{ subitem.title }}</a></li> 
+                                   {% endfor %}
+                               </ul>
+                           </li>
+                       {% else %} 
+                           <li>
+                               <a href="{{ item.url }}">{{ item.title }}</a>
+                            </li>
+                        {% endif %} 
+                    {% endfor %}
+					<li>
+						<a href="{{ 'contact'|page }}">Contact</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>

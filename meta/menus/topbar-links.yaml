@@ -1,0 +1,37 @@
+name: 'Topbar Links'
+items:
+    -
+        title: Vastgoed
+        nesting: ''
+        type: url
+        url: 'https://www.brandsma-vastgoed.nl/'
+        code: ''
+        reference: ''
+        cmsPage: ''
+        replace: ''
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '1'
+    -
+        title: Links
+        nesting: '0'
+        type: static-page
+        url: ''
+        code: ''
+        reference: links
+        cmsPage: ''
+        replace: '0'
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: 'Mijn Polis Map'
+        type: url
+        url: 'https://www.polismapdigitaal.nl/'
+        code: ''
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '1'

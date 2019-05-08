@@ -1,0 +1,52 @@
+name: 'Hoofd Menu'
+items:
+    -
+        title: Pensioenen
+        nesting: '0'
+        type: static-page
+        url: ''
+        code: ''
+        reference: pensioenen
+        cmsPage: ''
+        replace: '0'
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: Hypotheken
+        nesting: '0'
+        type: static-page
+        url: ''
+        code: ''
+        reference: hypotheken
+        cmsPage: ''
+        replace: '0'
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: 'Financiele Planning'
+        nesting: '0'
+        type: static-page
+        url: ''
+        code: ''
+        reference: financiele-planning
+        cmsPage: ''
+        replace: '0'
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: Begeleiding
+        nesting: '0'
+        type: static-page
+        code: ''
+        reference: aankoopverkoopbegeleiding
+        replace: '0'
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'

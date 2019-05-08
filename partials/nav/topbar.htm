@@ -1,0 +1,17 @@
+[viewBag]
+
+[staticMenu]
+code = "topbar-links"
+==
+{% if this.theme.welcome %}
+	<div class="top-bar">
+		<div class="container">
+			<p class="greeting">{{ this.theme.welcome }}</p>
+			<div class="quick-link">
+			    {% for item in staticMenu.menuItems %}
+				    <a {{ item.viewBag.isExternal ? 'target="_blank"' }} href="{{ item.url }}">{{ item.title }}</a>{% if not loop.last %}|{% endif %}
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+{% endif %}

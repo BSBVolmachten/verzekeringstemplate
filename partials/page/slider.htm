@@ -1,0 +1,45 @@
+[viewBag]
+==
+<?php
+use bsbvolmachten\slider\Models\Slider;
+
+function onStart(){
+    $this['slides'] = Slider::orderBy('sort_order', 'ASC')->get();
+}
+?>
+==
+{% if slides != '[]' %}
+	<div class="rev_slider_wrapper slider-primary">
+		<div class="rev_slider" id="rev_slider_1" style="display:none;">
+			<ul>
+				{% for slide in slides %}
+					{% if slide.align == 'left' %}
+					<li class="slider-item-1" data-transition="slidevertical">
+						<img class="rev-slidebg" src="{{ slide.image.thumb(1920,500,{'mode':'crop'}) }}" alt="#" />
+						<div class="tp-caption tp-resizeme slider-title" data-frames="[{&quot;delay&quot;:300,&quot;speed&quot;:600,&quot;frame&quot;:&quot;0&quot;,&quot;from&quot;:&quot;y:50px;opacity:0;&quot;,&quot;to&quot;:&quot;o:1;&quot;,&quot;ease&quot;:&quot;Power3.easeInOut&quot;},{&quot;delay&quot;:&quot;wait&quot;,&quot;speed&quot;:300,&quot;frame&quot;:&quot;999&quot;,&quot;to&quot;:&quot;opacity:0;&quot;,&quot;ease&quot;:&quot;Power3.easeInOut&quot;}]"
+						data-x="left" data-hoffset="0" data-y="top" data-voffset="115">{{ slide.title }}</div>
+						<div class="tp-caption tp-resizeme slider-subtitle" data-frames="[{&quot;delay&quot;:600,&quot;speed&quot;:600,&quot;frame&quot;:&quot;0&quot;,&quot;from&quot;:&quot;y:50px;opacity:0;&quot;,&quot;to&quot;:&quot;o:1;&quot;,&quot;ease&quot;:&quot;Power3.easeInOut&quot;},{&quot;delay&quot;:&quot;wait&quot;,&quot;speed&quot;:300,&quot;frame&quot;:&quot;999&quot;,&quot;to&quot;:&quot;opacity:0;&quot;,&quot;ease&quot;:&quot;Power3.easeInOut&quot;}]"
+							data-x="left" data-y="top" data-hoffset="0" data-voffset="210">{{ slide.text }}</div>
+						{% if slide.urlswitch == true %}
+						<a href="{{ slide.url }}" class="tp-caption tp-resizeme au-btn au-btn-white" data-frames="[{&quot;delay&quot;:300,&quot;speed&quot;:600,&quot;frame&quot;:&quot;0&quot;,&quot;from&quot;:&quot;y:50px;opacity:0;&quot;,&quot;to&quot;:&quot;o:1;&quot;,&quot;ease&quot;:&quot;Power3.easeInOut&quot;},{&quot;delay&quot;:&quot;wait&quot;,&quot;speed&quot;:300,&quot;frame&quot;:&quot;999&quot;,&quot;to&quot;:&quot;opacity:0;&quot;,&quot;ease&quot;:&quot;Power3.easeInOut&quot;}]"
+						data-x="left" data-hoffset="0" data-y="top" data-voffset="320">{{ slide.url_text }}</a>
+						{% endif %}
+					</li>
+					{% elseif slide.align == 'center' %}
+						<li class="slider-item-2" data-transition="slidevertical">
+							<img class="rev-slidebg" src="{{ slide.image.thumb(1920,500,{'mode':'crop'}) }}" alt="#" />
+							<div class="tp-caption slider-title" data-frames="[{&quot;delay&quot;:300,&quot;speed&quot;:600,&quot;frame&quot;:&quot;0&quot;,&quot;from&quot;:&quot;y:50px;opacity:0;&quot;,&quot;to&quot;:&quot;o:1;&quot;,&quot;ease&quot;:&quot;Power3.easeInOut&quot;},{&quot;delay&quot;:&quot;wait&quot;,&quot;speed&quot;:300,&quot;frame&quot;:&quot;999&quot;,&quot;to&quot;:&quot;opacity:0;&quot;,&quot;ease&quot;:&quot;Power3.easeInOut&quot;}]"
+								data-x="center" data-hoffset="0" data-y="top" data-voffset="100"><br>{{ slide.title }}</div>
+							<div class="tp-caption slider-subtitle" data-frames="[{&quot;delay&quot;:600,&quot;speed&quot;:600,&quot;frame&quot;:&quot;0&quot;,&quot;from&quot;:&quot;y:50px;opacity:0;&quot;,&quot;to&quot;:&quot;o:1;&quot;,&quot;ease&quot;:&quot;Power3.easeInOut&quot;},{&quot;delay&quot;:&quot;wait&quot;,&quot;speed&quot;:300,&quot;frame&quot;:&quot;999&quot;,&quot;to&quot;:&quot;opacity:0;&quot;,&quot;ease&quot;:&quot;Power3.easeInOut&quot;}]"
+								data-x="center" data-hoffset="0" data-y="top" data-voffset="250">{{ slide.text }}</div>
+							{% if slide.urlswitch == true %}
+							<a href="{{ slide.url }}" class="tp-caption au-btn au-btn-white tp-resizeme" data-frames="[{&quot;delay&quot;:300,&quot;speed&quot;:600,&quot;frame&quot;:&quot;0&quot;,&quot;from&quot;:&quot;y:50px;opacity:0;&quot;,&quot;to&quot;:&quot;o:1;&quot;,&quot;ease&quot;:&quot;Power3.easeInOut&quot;},{&quot;delay&quot;:&quot;wait&quot;,&quot;speed&quot;:300,&quot;frame&quot;:&quot;999&quot;,&quot;to&quot;:&quot;opacity:0;&quot;,&quot;ease&quot;:&quot;Power3.easeInOut&quot;}]"
+							data-x="center" data-hoffset="0" data-y="top" data-voffset="350">{{ slide.url_text }}</a>
+							{% endif %}
+						</li>
+					{% endif %}
+				{% endfor %}
+			</ul>
+		</div>
+	</div>
+{% endif %}

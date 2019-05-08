@@ -1,0 +1,19 @@
+title = "Contact"
+url = "/contact"
+layout = "default"
+description = "Contactpagina"
+meta_title = "Contact"
+is_hidden = 0
+robot_index = "index"
+robot_follow = "follow"
+
+[viewBag]
+
+[contactForm]
+injectBootstrapAssets = 0
+injectMainScript = 0
+==
+<div class="page-content contact">
+	{% partial 'nav/kruimelpad' %}
+	{% partial 'page/contact' %}
+</div>

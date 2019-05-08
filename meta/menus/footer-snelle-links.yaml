@@ -1,0 +1,64 @@
+name: 'Footer Snelle Links'
+items:
+    -
+        title: 'Kortlopende Reisverzekering'
+        nesting: '0'
+        type: static-page
+        url: ''
+        code: ''
+        reference: kortlopende-reisverzekering
+        cmsPage: ''
+        replace: '0'
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: Verzekeringen
+        type: cms-page
+        code: ''
+        reference: verzekeringen
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: Hypotheken
+        type: cms-page
+        code: ''
+        reference: hypotheken
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: Contact
+        type: cms-page
+        code: ''
+        reference: contact
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: Pensioenen
+        nesting: '0'
+        type: static-page
+        code: ''
+        reference: pensioenen
+        replace: '0'
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: 'Financiele Planning'
+        nesting: '0'
+        type: static-page
+        code: ''
+        reference: hypotheken
+        replace: '0'
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'

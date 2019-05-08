@@ -1,0 +1,79 @@
+name: 'Verzekerings Template'
+description: 'Template voor verzekeringsmaatschappijen'
+author: 'BSB Volmachten'
+homepage: 'https://bsbvolmachten.nl'
+require:
+    - PopcornPHP.ImageCompress
+    - RainLab.Builder
+    - Rainlab.Sitemap
+    - RainLab.Pages
+    - Indikator.DevTools
+    - LaminSanneh.FlexiContact
+    - AnandPatel.SeoExtension
+code: ''
+form:
+    fields:
+        logo:
+            label: 'Logo'
+            type: mediafinder
+            mode: image
+        naam:
+            label: 'Website Naam'
+            comment: 'De naam van de website die op de front-end te zien is.'
+        welcome:
+            label: 'Welkoms slogen'
+            comment: 'Staat bovenaan op de website. Als dit veld leeg is zal deze balk worden verborgen.'
+        telefoon:
+            label: 'Contact Telefoonnummer'
+        mobiel:
+            label: 'Contact Mobiel Nummer'
+        fax:
+            label: 'fax'
+        email:
+            label: 'Contact E-Mail Adres'
+        land:
+            label: 'Land'
+        woonplaats:
+            label: 'Woonplaats'
+        postcode:
+            label: 'Postcode'
+        straat:
+            label: 'Adres'
+        postbus:
+            label: 'Postbus'
+        postadres:
+            label: 'Postadres'
+        location:
+            label: 'Google Maps Link'
+        ot_maandag:
+            label: 'Openingstijden Maandag'
+        ot_dinsdag:
+            label: 'Openingstijden Dinsdag'
+        ot_woensdag:
+            label: 'Openingstijden Woensdag'
+        ot_donderdag:
+            label: 'Openingstijden Donderdag'
+        ot_vrijdag:
+            label: 'Openingstijden Vrijdag'
+        ot_zaterdag:
+            label: 'Openingstijden Zaterdag'
+        ot_zondag:
+            label: 'Openingstijden Zondag'
+        linkedin:
+            label: 'Linked-In Link'
+        twitter:
+            label: 'Twitter Link'
+        facebook:
+            label: 'Facebook Link'
+        instagram:
+            label: 'Instagram Link'
+        vimeo:
+            label: 'Vimeo Link'
+        youtube:
+            label: 'Youtube Link'
+        color:
+            label: Primaire Huisstijl kleur
+            type: colorpicker
+        subcolor:
+            label: Secundaire Huisstijl kleur
+            type: colorpicker

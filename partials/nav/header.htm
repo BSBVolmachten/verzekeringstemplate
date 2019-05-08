@@ -1,0 +1,45 @@
+[viewBag]
+==
+<div class="header-main">
+	<div class="container">
+		<div class="logo">
+			<a href="index.html">
+				<img class="img-responsive" src="{{ this.theme.logo|media }}" alt="Logo" />
+			</a>
+		</div>
+		<div class="contact-widget">
+			<div class="contact-list hidden-lg-tablet">
+				{% if this.theme.telefoon %}
+					<div class="item">
+						<i class="lnr lnr-phone-handset"></i>
+						<div class="text">
+							<p class="top">Vragen?</p>
+							<p class="bot">{{ this.theme.telefoon }}</p>
+						</div>
+					</div>
+				{% endif %}
+				{% if this.theme.straat and this.theme.postcode and this.theme.woonplaats %}
+					<div class="item">
+						<i class="lnr lnr-map-marker"></i>
+						<div class="text">
+							<p class="top">{{ this.theme.straat }}</p>
+							<p class="bot">{{ this.theme.postcode }} {{ this.theme.woonplaats }}</p>
+						</div>
+					</div>
+				{% endif %}
+				{% if this.theme.postbus and this.theme.postadres %}
+					<div class="item">
+						<i class="lnr lnr-envelope"></i>
+						<div class="text">
+							<p class="top">{{ this.theme.postbus }}</p>
+							<p class="bot">{{ this.theme.postadres }}</p>
+						</div>
+					</div>
+				{% endif %}
+			</div>
+			<!--
+			<button class="au-btn au-btn-sm au-btn-orange hidden-md-phone">Button</button>
+			-->
+		</div>
+	</div>
+</div>

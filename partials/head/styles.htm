@@ -1,0 +1,87 @@
+[viewBag]
+==
+<!-- Stylesheets-->
+{% styles %}
+
+<link href="{{[
+		'assets/vendor/bootstrap/dist/css/bootstrap.min.css',
+		'assets/vendor/animate.css/animate.min.css',
+		'assets/vendor/jQuery.mmenu/dist/css/jquery.mmenu.all.css',
+		'assets/vendor/owl.carousel/dist/assets/owl.carousel.min.css',
+		'assets/vendor/owl.carousel/dist/assets/owl.theme.default.min.css',
+		'assets/vendor/revolution/css/layers.css',
+		'assets/vendor/revolution/css/navigation.css',
+		'assets/vendor/revolution/css/settings.css',
+		'assets/fonts/open-sans/css/open-sans.css',
+		'assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css',
+		'assets/fonts/Linearicons-Free-v1.0.0/style.css',
+		'assets/css/main.css',
+]|theme }}" rel="stylesheet">
+
+<style>
+	.heading-section, 
+	.au-breadcrumb .au-breadcrumb-item a:hover, 
+	.about-layout-1 .heading, 
+	.blog-item .blog-topic a, 
+	.blog-single .post-info .post-topic a, 
+	.blog-single .post-info .post-date a, 
+	.blog-single .post-lists ul li i, 
+	.blog-single .post-footer a, 
+	.blog-single .post-footer span, 
+	.blog-single .post-comments-list .post-comments-item .post-comments-item-main .sub-content .btn-reply, 
+	.content-box-item.style-3 .icon-present i, 
+	.content-box-item.style-3 .title h4, 
+	.heading-normal .au-breadcrumb .au-breadcrumb-item a:hover, 
+	.heading-normal .au-breadcrumb .au-breadcrumb-item:after,
+	.heading-services-list.invert .au-breadcrumb .au-breadcrumb-item a, .heading-services-list.invert .au-breadcrumb .au-breadcrumb-item:after,
+	.heading-services-detail-1 .au-breadcrumb .au-breadcrumb-item:after,
+	.heading-services-detail-1 .au-breadcrumb .au-breadcrumb-item a,
+	.product-item.style-1 .title a, 
+	.product-item.style-2 .icon i,
+	.product-item.style-2 .view-more a, 
+	.product-layout.style-1 .heading h3,
+	.project-subjects ul li.is-checked h4, 
+	.project-subjects ul li:hover h4, 
+	.post-table-style-1 .title-row td, 
+	.post-content-box ul li i, 
+	.sidebar-style-2 .sidebar-container .sidebar-item a, 
+	.team-item.style-1 .team-info .name a, 
+	.team-item.style-1 .team-info .phone span, 
+	.team-item.style-2 .agent-name,
+	.au-btn-default:hover {
+		color: {{ this.theme.color }};
+	}
+
+	.pagination-list li:hover, 
+	.pagination-list li.active, 
+	.call-to-action.style-2, 
+	.contact-layout-5 .info-accordion .open .accordion-title, 
+	.contact-layout-5 .info-accordion .accordion-title:hover, 
+	.contact_layout_8 .sidebar-control-map ul li.active a, 
+	.content-box-item.style-1 .content-box-icon, 
+	.main-footer .social-widget .social-list li:hover, 
+	.navbar-main, 
+	.navbar-main .menu .dropdown .dropdown-menu li a:hover, 
+	.navbar-main .menu .dropdown-child .dropdown-menu-child li a:hover, 
+	.icon-box-item .icon-box-icon, 
+	.product-item.style-2:hover, 
+	.quote-form-style-3, 
+	.post-table table tbody tr .tblock .post-btn button, 
+	.sidebar-style-1 .sidebar-container .sidebar-item a, 
+	.sidebar-style-1 .down-file-widget .widget-button a,
+	.slider-medium-layout.style-1 .slider-item .slider-dots li.active,
+	.testinmonials .testinmonial-control li.active, 
+	.contact-layout.style-1 .contact-form,
+	.au-btn-default
+	 {
+		background-color: {{ this.theme.color }};
+		background: {{ this.theme.color }};
+	}
+
+	.pagination-list li:hover,
+	.au-btn-default:hover,
+	.au-btn-default,
+	.pagination-list li.active {
+		border-color: {{ this.theme.color }};
+	}
+</style>

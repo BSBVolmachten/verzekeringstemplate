@@ -1,0 +1,137 @@
+[viewBag]
+
+[staticMenu]
+code = "footer-links"
+
+[staticMenu staticMenu2]
+code = "footer-snelle-links"
+==
+{% if this.theme.facebook or this.theme.twitter or this.theme.linkedin or this.theme.instagram or this.theme.youtube or this.theme.vimeo %}
+    {% set col = '3' %}
+{% else %}
+    {% set col = '6' %}
+{% endif %}
+<footer>
+	<div class="main-footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 col-sm-6">
+					<div class="services-widget contact-widget">
+						<h3>Snelle Links</h3>
+						<div class="services-list">
+							<div class="row">
+								<div class="col-md-6">
+									<ul>
+									{% for item in staticMenu2.menuItems|slice(0, 3) %}
+                    				    <li>
+                    				        <a {{ item.viewBag.isExternal ? 'target="_blank"' }} href="{{ item.url }}">{{ item.title }}</a>
+                    				    </li>
+                    				{% endfor %}
+									</ul>
+								</div>
+								<div class="col-md-6">
+									<ul>
+    									{% for item in staticMenu2.menuItems|slice(3, 6) %}
+                        				    <li>
+                        				        <a {{ item.viewBag.isExternal ? 'target="_blank"' }} href="{{ item.url }}">{{ item.title }}</a>
+                        				    </li>
+                        				{% endfor %}
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-{{ col }} col-sm-6">
+					<div class="contact-widget">
+						<h3>Contactgegevens</h3>
+						<div class="content">
+							{% if this.theme.straat and this.theme.postcode and this.theme.woonplaats %}
+							<p>
+								<span class="bold">Adres:</span>{{ this.theme.straat }}<br> {{ this.theme.postcode }} {{ this.theme.woonplaats }}
+							</p>
+							{% endif %}
+							{% if this.theme.telefoon %}
+								<p>
+									<span class="bold">Tel:</span>
+									<a href="tel:{{ this.theme.telefoon }}">{{ this.theme.telefoon }}</a>
+								</p>
+							{% endif %}
+							{% if this.theme.email %}
+								<p>
+									<span class="bold">Email:</span>
+									<a href="mailto:{{ html_email(this.theme.email) }}">{{ html_email(this.theme.email) }}</a>
+								</p>
+							{% endif %}
+						</div>
+					</div>
+				</div>
+				{% if this.theme.facebook or this.theme.twitter or this.theme.linkedin or this.theme.instagram or this.theme.youtube or this.theme.vimeo %}
+    				<div class="col-md-3 col-sm-6">
+    					<div class="social-widget">
+    						<h3>Volg Ons</h3>
+    						<ul class="social-list">
+    							{% if this.theme.facebook %}
+    								<li>
+    									<a href="{{ this.theme.facebook }}">
+    										<i class="fa fa-facebook"></i>
+    									</a>
+    								</li>
+    							{% endif %}
+    							{% if this.theme.twitter %}
+    								<li>
+    									<a href="{{ this.theme.twitter }}">
+    										<i class="fa fa-twitter"></i>
+    									</a>
+    								</li>
+    							{% endif %}
+    							{% if this.theme.linkedin %}
+    								<li>
+    									<a href="{{ this.theme.linkedin }}">
+    										<i class="fa fa-linkedin"></i>
+    									</a>
+    								</li>
+    							{% endif %}
+    							{% if this.theme.instagram %}
+    								<li>
+    									<a href="{{ this.theme.instagram }}">
+    										<i class="fa fa-instagram"></i>
+    									</a>
+    								</li>
+    							{% endif %}
+    							{% if this.theme.youtube %}
+    								<li>
+    									<a href="{{ this.theme.youtube }}">
+    										<i class="fa fa-youtube"></i>
+    									</a>
+    								</li>
+    							{% endif %}
+    							{% if this.theme.vimeo %}
+    								<li>
+    									<a href="{{ this.theme.vimeo }}">
+    										<i class="fa fa-vimeo"></i>
+    									</a>
+    								</li>
+    							{% endif %}
+    						</ul>
+    					</div>
+    				</div>
+    			{% endif %}
+			</div>
+		</div>
+	</div>
+	<div class="sub-footer">
+		<div class="container">
+			{% if this.theme.naam %}
+				<p class="copyright">Copyright &copy; {{ fecha|date('Y') }} {{ this.theme.naam }}. Website ontworpen door <a href="https://bsbvolmachten.nl">BSB Volmachten</a>.</p>
+			{% endif %}
+			<ul class="quick-link">
+				{% for item in staticMenu.menuItems %}
+				    <li>
+				        <a {{ item.viewBag.isExternal ? 'target="_blank"' }} href="{{ item.url }}">{{ item.title }}</a>
+				    </li>
+				{% endfor %}
+			</ul>
+		</div>
+	</div>
+</footer>

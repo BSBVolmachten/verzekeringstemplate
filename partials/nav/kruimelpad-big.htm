@@ -1,0 +1,19 @@
+[viewBag]
+==
+{% set achtergrond = 'achtergronden/' ~ this.page.id ~ '.jpg' %}
+{% set display = true %}
+<section class="heading-page heading-services-list" {% if display %}style="background: linear-gradient(rgba({{ rgb }}.4), rgba({{ rgb }}, 0.4)), rgba(0, 0, 0, 0) url({{ achtergrond|media }}) center center no-repeat;"{% endif %}>
+    <div class="container">
+        <div class="heading-title">
+            <h1 class="color-white">{{ this.page.title }}</h1>
+        </div>
+        <ul class="au-breadcrumb mainnav">
+            <li class="au-breadcrumb-item">
+                <a class="color-white" href="{{ 'home'|page }}">Home</a>
+            </li>
+            <li class="au-breadcrumb-item active">
+                <a class="color-white" href="{{ ''|page }}">{{ this.page.title }}</a>
+            </li>
+        </ul>
+    </div>
+</section>

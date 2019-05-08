@@ -1,0 +1,24 @@
+name: 'Footer Links'
+items:
+    -
+        title: Documenten
+        nesting: ''
+        type: cms-page
+        url: ''
+        code: ''
+        reference: documenten
+        cmsPage: ''
+        replace: ''
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: 'Privacyverklaring Website'
+        type: url
+        url: /storage/app/uploads/public/5cc/ab2/408/5ccab24082c9a470486770.pdf
+        code: ''
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
