@@ -2,14 +2,6 @@ name: 'Verzekerings Template'
 description: 'Template voor verzekeringsmaatschappijen'
 author: 'BSB Volmachten'
 homepage: 'https://bsbvolmachten.nl'
-require:
-    - PopcornPHP.ImageCompress
-    - RainLab.Builder
-    - Rainlab.Sitemap
-    - RainLab.Pages
-    - Indikator.DevTools
-    - LaminSanneh.FlexiContact
-    - AnandPatel.SeoExtension
 code: ''
 form:
     fields:
@@ -73,7 +65,4 @@ form:
             label: 'Youtube Link'
         color:
             label: Primaire Huisstijl kleur
-            type: colorpicker
-        subcolor:
-            label: Secundaire Huisstijl kleur
             type: colorpicker
