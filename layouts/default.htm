@@ -2,8 +2,8 @@ description = "Default layout"
 ==
 <?php
 
-function onStart(){
-
+function onStart()
+{
     $hex = $this->theme->color;
     list($r, $g, $b) = sscanf($hex, "#%02x%02x%02x");
     $this['rgb'] = $r.','.$g.','.$b;
