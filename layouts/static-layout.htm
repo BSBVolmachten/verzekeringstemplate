@@ -4,6 +4,16 @@ description = "Static Pages Layout"
 useContent = 1
 default = 1
 ==
+<?php
+
+function onStart()
+{
+    $hex = $this->theme->color;
+    list($r, $g, $b) = sscanf($hex, "#%02x%02x%02x");
+    $this['rgb'] = $r.','.$g.','.$b;
+}
+?>
+==
 <!DOCTYPE html>
 <html lang="nl">
     <head>
