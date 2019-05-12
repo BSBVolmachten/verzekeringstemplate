@@ -2,11 +2,13 @@
 ==
 <div class="header-main">
 	<div class="container">
-		<div class="logo">
-			<a href="index.html">
-				<img class="img-responsive" src="{{ this.theme.logo|media }}" alt="Logo" />
-			</a>
-		</div>
+		{% if this.theme.logo %}
+			<div class="logo">
+				<a href="index.html">
+					<img class="img-responsive" src="{{ this.theme.logo|media }}" alt="Logo" />
+				</a>
+			</div>
+		{% endif %}
 		<div class="contact-widget">
 			<div class="contact-list hidden-lg-tablet">
 				{% if this.theme.telefoon %}
