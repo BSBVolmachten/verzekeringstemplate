@@ -19,7 +19,7 @@ function onStart(){
 			<div class="partner-list owl-carousel" data-items="5" data-col-sm="1" data-col-md="2" data-col-lg="4" data-center="0">
 				{% for partner in partners %}
 					<div class="partner-item">
-						<a href="{{ partner.url|replace({'http://': 'https://'}) }}">
+						<a target="_blank" href="{{ partner.url|replace({'http://': 'https://'}) }}">
 							<img src="{{ partner.image.thumb(203,105) }}" alt="{{ partner.name }}" />
 						</a>
 					</div>
