@@ -1941,7 +1941,6 @@ Footer
   float: right;
   padding: 0;
   line-height: 1;
-  margin: 0;
   margin: 0 -15px;
 }
 
@@ -3873,9 +3872,7 @@ Slider Layout
   left: 0;
   top: 0;
   pointer-events: none;
-
-  /* black overlay with 50% transparency */
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.4);
 }
 
 .slider-primary .slider-title {
