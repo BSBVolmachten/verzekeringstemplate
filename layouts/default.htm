@@ -18,7 +18,9 @@ function onStart()
     </head>
     <body>
 			<header>
-    			{% partial 'nav/loader' %}
+				{% if this.page.id == 'home' %}
+				{% partial 'nav/loader' %}
+				{% endif %}
 				{% partial 'nav/mobilenav' %}
 				{% partial 'nav/topbar' %}
 				{% partial 'nav/header' %}
