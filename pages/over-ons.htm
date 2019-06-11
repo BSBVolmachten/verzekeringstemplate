@@ -10,10 +10,12 @@ robot_index = "index"
 robot_follow = "follow"
 
 [viewBag]
+
+[fullblocks]
 ==
 <div class="page-content about-page">
 	{% partial 'nav/kruimelpad' %}
-	{% partial 'page/blocks-fullwidth' %}
+	{% component 'fullblocks' %}
 	{% partial 'page/team' %}
 	{% partial 'page/testimonials-full' %}
 </div>

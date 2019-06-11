@@ -1,15 +1,8 @@
 [viewBag]
-==
-<?php
-use Cms\Classes\Page;
-use bsbvolmachten\documenten\Models\Documenten;
 
-function onStart(){
-    $this['documenten'] = Documenten::orderBy('sort_order', 'ASC')->get();
-}
-?>
+[documenten]
 ==
-{% if documenten != '[]' %}
+{% if documenten %}
     <section class="about about-layout">
         <div class="container">
             <div class="row">
@@ -17,7 +10,7 @@ function onStart(){
                     <div class="heading">
                         <h3 class="heading-section">{{ this.page.title }}</h3>
                     </div>
-                    {% for document in documenten %}
+                    {% for document in documenten.documenten %}
                     <div class="passage">
                             <a target="_blank" href="{% if document.file.path %}{{ document.file.path }}{% else %}{{ document.url }}{% endif %}" class="au-btn au-btn-blue au-btn-sm">{{ document.title }}</a>
                     </div>

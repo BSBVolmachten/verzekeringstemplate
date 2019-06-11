@@ -1,23 +1,17 @@
 [viewBag]
 snippetCode = "medewerkers"
 snippetName = "Medewerkers"
-==
-<?php
-use bsbvolmachten\team\Models\Medewerkers;
 
-function onStart(){
-    $this['team'] = Medewerkers::orderBy('sort_order', 'ASC')->get();
-}
-?>
+[medewerkers]
 ==
-{% if team != '[]' %}
+{% if medewerkers %}
     <section class="team team-layout style-2 style-1">
         <div class="container">
             <div class="heading">
                 <h3 class="heading-section">Ons Team</h3>
             </div>
             <div class="row">
-            	{% for werknemer in team %}
+				{% for werknemer in medewerkers.medewerkers %}
 	                <div class="col-lg-6 col-md-12">
 	                    <div class="team-item style-1 match-item">
 	                        <div class="team-image">
