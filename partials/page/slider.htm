@@ -1,18 +1,12 @@
 [viewBag]
-==
-<?php
-use bsbvolmachten\slider\Models\Slider;
 
-function onStart(){
-    $this['slides'] = Slider::orderBy('sort_order', 'ASC')->get();
-}
-?>
+[slider]
 ==
-{% if slides != '[]' %}
+{% if slides %}
 	<div class="rev_slider_wrapper slider-primary">
 		<div class="rev_slider" id="rev_slider_1" style="display:none;">
 			<ul>
-				{% for slide in slides %}
+				{% for slide in slider.slides %}
 					{% if slide.align == 'left' %}
 					<li class="slider-item-1" data-transition="slidevertical">
 						<img class="rev-slidebg" src="{{ slide.image.thumb(1920,500,{'mode':'crop'}) }}" alt="#" />
