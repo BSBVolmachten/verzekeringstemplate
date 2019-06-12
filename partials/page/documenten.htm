@@ -12,7 +12,7 @@
                     </div>
                     {% for document in documenten.documenten %}
                     <div class="passage">
-                            <a target="_blank" href="{% if document.file.path %}{{ document.file.path }}{% else %}{{ document.url }}{% endif %}" class="au-btn au-btn-blue au-btn-sm">{{ document.title }}</a>
+                            <a target="_blank" href="{% if document.file.path %}{{ document.file.path }}{% else %}{{ document.url }}{% endif %}" class="au-btn au-btn-default au-btn-sm">{{ document.title }}</a>
                     </div>
                     {% endfor %}
                 </div>
