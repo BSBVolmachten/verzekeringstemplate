@@ -1,28 +1,16 @@
 [viewBag]
-==
-<?php
 
-use bsbvolmachten\verzekeringen\Models\Particulier;
-use bsbvolmachten\verzekeringen\Models\Zakelijk;
-use bsbvolmachten\verzekeringen\Models\Categorieen;
-    
-function onStart(){
-
-    $this['categorieen'] = Categorieen::orderBy('sort_order', 'ASC')->get();
-    $this['verzekeringenparticulier'] = Particulier::orderBy('sort_order', 'ASC')->get();
-    $this['verzekeringenzakelijk'] = Zakelijk::orderBy('sort_order', 'ASC')->get();
-}
-?>
+[verzekeringen]
 ==
-{% if verzekeringenparticulier != '[]' and this.page.id != 'zakelijk' %}
+{% if verzekeringen.particulier and this.page.id != 'zakelijk' %}
     <div class="product product-layout product-layout-none-heading team-layout style-1">
         <div class="container">
             <div class="heading">
                 <h3 class="heading-section">Particuliere Verzekeringen</h3>
             </div>
-            {% for categorie in categorieen %}
+            {% for categorie in verzekeringen.categorieen %}
                 {% set count = 0 %}
-                {% for verzekering in verzekeringenparticulier if verzekering.cat == categorie.id %}
+                {% for verzekering in verzekeringen.particulier if verzekering.cat == categorie.id %}
                     {% set count = count + 1 %}
                 {% endfor %}
                 {% if count > 0 %}
@@ -32,7 +20,7 @@ function onStart(){
                         </div>
                     </div>
                     <div class="row">
-                        {% for verzekering in verzekeringenparticulier if verzekering.cat == categorie.id %}
+                        {% for verzekering in verzekeringen.particulier if verzekering.cat == categorie.id %}
                             {% if verzekering.fullswitch %}
                                 {% set link = 'verzekering-particulier'|page({ slug: verzekering.slug }) %}
                             {% else %}
@@ -68,15 +56,15 @@ function onStart(){
     </div>
 {% endif %}
 
-{% if verzekeringenzakelijk != '[]' and this.page.id != 'particulier' %}
+{% if verzekeringen.zakelijk and this.page.id != 'particulier' %}
     <div class="product product-layout product-layout-none-heading team-layout style-1">
         <div class="container">
             <div class="heading">
                 <h3 class="heading-section">Zakelijke Verzekeringen</h3>
             </div>
-            {% for categorie in categorieen %}
+            {% for categorie in verzekeringen.categorieen %}
                 {% set count = 0 %}
-                {% for verzekering in verzekeringenzakelijk if verzekering.cat == categorie.id %}
+                {% for verzekering in verzekeringen.zakelijk if verzekering.cat == categorie.id %}
                     {% set count = count + 1 %}
                 {% endfor %}
                 {% if count > 0 %}
@@ -86,7 +74,7 @@ function onStart(){
                         </div>
                     </div>
                     <div class="row">
-                        {% for verzekering in verzekeringenzakelijk if verzekering.cat == categorie.id %}
+                        {% for verzekering in verzekeringen.zakelijk if verzekering.cat == categorie.id %}
                             {% if verzekering.fullswitch %}
                                 {% set link = 'verzekering-zakelijk'|page({ slug: verzekering.slug }) %}
                             {% else %}

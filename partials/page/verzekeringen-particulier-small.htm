@@ -1,20 +1,9 @@
 [viewBag]
+
+[verzekeringen]
+homeSwitch = 1
 ==
-<?php
-use Cms\Classes\Page;
-use bsbvolmachten\verzekeringen\Models\Particulier;
-use bsbvolmachten\verzekeringen\Models\Zakelijk;
-
-function onStart(){
-
-    $this['verzekeringenparticulier'] = Particulier::orderBy('sort_order', 'ASC')->where('homeswitch', true)->get();
-
-    $this['verzekeringenzakelijk'] = Zakelijk::orderBy('sort_order', 'ASC')->get();
-
-}
-?>
-==
-{% if verzekeringenparticulier != '[]' %}
+{% if verzekeringen.particulier %}
     <section class="product product-layout style-3">
         <div class="container">
             <div class="heading">
@@ -24,7 +13,7 @@ function onStart(){
                 <span>U kunt bij ons terecht voor onder andere de volgende verzekeringen</span>
             </div>
             <div class="row">
-                {% for verzekering in verzekeringenparticulier %}
+                {% for verzekering in verzekeringen.particulier %}
                     <div class="col-md-4 col-sm-6">
                         <div class="product-item style-2 match-item">
                             <div class="icon">
@@ -53,7 +42,7 @@ function onStart(){
     </section>
 {% endif %}
 
-{% if verzekeringenzakelijk != '[]' %}
+{% if verzekeringen.zakelijk %}
     <section class="product product-layout style-3">
         <div class="container">
             <div class="heading">
@@ -63,7 +52,7 @@ function onStart(){
                 <span>U kunt bij ons terecht voor onder andere de volgende verzekeringen</span>
             </div>
             <div class="row">
-                {% for verzekering in verzekeringenzakelijk %}
+                {% for verzekering in verzekeringen.zakelijk %}
                     <div class="col-md-4 col-sm-6">
                         <div class="product-item style-2 match-item">
                             <div class="icon">
