@@ -1,24 +1,10 @@
 [viewBag]
-==
-<?php
-use bsbvolmachten\verzekeringen\Models\Particulier;
-use bsbvolmachten\verzekeringen\Models\Zakelijk;
 
-function onStart(){
-    if ($this->page->id == 'verzekering-particulier') {
-        $slug = $this->param('slug');
-        $this['verzekering'] = Particulier::where('slug' , $slug)->where('fullswitch', true)->first();
-        $this['verzekeringen'] = Particulier::orderBy('sort_order', 'ASC')->where('homeswitch', true)->get();
-    }
-    if ($this->page->id == 'verzekering-zakelijk') {
-        $slug = $this->param('slug');
-        $this['verzekering'] = Zakelijk::where('slug' , $slug)->where('fullswitch', true)->first();
-        $this['verzekeringen'] = Zakelijk::orderBy('sort_order', 'ASC')->where('homeswitch', true)->get();
-    }
-}
-?>
+[verzekeringen]
+
+[verzekering]
 ==
-{% set slug = verzekering.slug %}
+{% set slug = verzekering.verzekering.slug %}
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-push-4">
@@ -38,28 +24,28 @@ function onStart(){
                         {% endif %}
                     </li>
                     <li class="au-breadcrumb-item active">
-                        <a href="#">{{ verzekering.title }}</a>
+                        <a href="#">{{ verzekering.verzekering.title }}</a>
                     </li>
                 </ul>
             </div>
             <section class="post-services post-services-detail-1">
                 <div class="title-page">
-                    <h1 class="heading-section bold">{{ verzekering.title }}</h1>
+                    <h1 class="heading-section bold">{{ verzekering.verzekering.title }}</h1>
                 </div>
-                {% if verzekering.image %}
+                {% if verzekering.verzekering.image %}
                     <div class="slider slider-medium-layout style-1 style-2">
                         <div class="slider-item">
-                            <img class="img-responsive" src="{{ verzekering.image.thumb(1140,641,{'mode':'crop'}) }}" alt="{{ verzekering.title }}" />
+                            <img class="img-responsive" src="{{ verzekering.verzekering.image.thumb(1140,641,{'mode':'crop'}) }}" alt="{{ verzekering.verzekering.title }}" />
                         </div>
                     </div>
                 {% endif %}
                 <div class="post-paragraph p1">
                     <div class="post-content">
-                        {{ verzekering.text|raw }}
+                        {{ verzekering.verzekering.text|raw }}
                     </div>
                 </div>
-                {% if verzekering.dekking %}
-                    {% set dekking = verzekering.dekking|replace({'<ul>': '', '</ul>': '', '</li>': ''}) %}
+                {% if verzekering.verzekering.dekking %}
+                    {% set dekking = verzekering.verzekering.dekking|replace({'<ul>': '', '</ul>': '', '</li>': ''}) %}
                     <div class="post-content-box">
                         <div class="row">
                             <div class="col-md-6">
@@ -89,7 +75,7 @@ function onStart(){
                         </div>
                     </div>
                 {% endif %}
-                {% if verzekering.fileswitch == true %}
+                {% if verzekering.verzekering.fileswitch == true %}
                     <div class="post-table">
                         <table class="table table-bordered table-responsive">
                             <tbody>
@@ -98,8 +84,8 @@ function onStart(){
                                         <div class="tblock-container">
                                             <span>Bijgevoegd bestand: </span>
                                             <div class="post-btn">
-                                                <button onclick=" window.open('{{ verzekering.file.path }}', '_blank'); return false;" class="au-btn au-btn-blue au-btn-sm">
-                                                <i class="fa fa-file-pdf-o"></i>{{ verzekering.file_desc }}</button>
+                                                <button onclick=" window.open('{{ verzekering.verzekering.file.path }}', '_blank'); return false;" class="au-btn au-btn-blue au-btn-sm">
+                                                <i class="fa fa-file-pdf-o"></i>{{ verzekering.verzekering.file_desc }}</button>
                                             </div>
                                         </div>
                                     </td>
@@ -115,11 +101,19 @@ function onStart(){
                 <ul class="sidebar-container">
                     <li class="sidebar-item active">
                         <a href="#">
-                            <i class="fa {{ verzekering.icon }}"></i>
-                            <span>{{ verzekering.title }}</span>
+                            <i class="fa {{ verzekering.verzekering.icon }}"></i>
+                            <span>{{ verzekering.verzekering.title }}</span>
                         </a>
                     </li>
-                    {% for verzekering in verzekeringen if verzekering.slug != slug and verzekering.fullswitch == true %}
+                    {% for verzekering in verzekeringen.zakelijk if verzekering.slug != slug and verzekering.fullswitch == true %}
+                        <li class="sidebar-item">
+                            <a href="{{ ''|page({ slug: verzekering.slug }) }}">
+                                <i class="fa {{ verzekering.icon }}"></i>
+                                <span>{{ verzekering.title }}</span>
+                            </a>
+                        </li>
+                    {% endfor %}
+                    {% for verzekering in verzekeringen.particulier if verzekering.slug != slug and verzekering.fullswitch == true %}
                         <li class="sidebar-item">
                             <a href="{{ ''|page({ slug: verzekering.slug }) }}">
                                 <i class="fa {{ verzekering.icon }}"></i>
