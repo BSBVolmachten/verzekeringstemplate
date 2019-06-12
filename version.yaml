@@ -9,3 +9,4 @@
 1.0.8: Replace inline code with components
 1.1.0: Replace verzekeringen with component
 1.1.1: Removed Hypotheken as CMS Page
+1.1.2: Changed button class
