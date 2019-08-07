@@ -12,10 +12,15 @@ robot_follow = "follow"
 [viewBag]
 
 [fullblocks]
+
+[medewerkers]
+
+[testimonials]
+fullWidth = 1
 ==
 <div class="page-content about-page">
 	{% partial 'nav/kruimelpad' %}
 	{% component 'fullblocks' %}
-	{% partial 'page/team' %}
-	{% partial 'page/testimonials-full' %}
+	{% component 'medewerkers' %}
+	{% component 'testimonials' %}
 </div>

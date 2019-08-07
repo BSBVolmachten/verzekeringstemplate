@@ -12,11 +12,14 @@ robot_follow = "follow"
 [viewBag]
 
 [fullblocks]
+
+[testimonials]
+fullWidth = 0
 ==
 <div class="page-content home-page-1">
 	{% partial 'page/slider' %}
 	{% component 'fullblocks' %}
 	{% partial 'page/verzekeringen-particulier-small' %}
-	{% partial 'page/testimonials' %}
+	{% component 'testimonials' %}
 	{% partial 'page/partners' %}
 </div>
