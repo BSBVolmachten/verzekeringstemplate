@@ -12,9 +12,12 @@ robot_follow = "follow"
 [viewBag]
 
 [fullblocks]
+
+[verzekeringen]
+homeSwitch = 0
 ==
 <div class="page-content services-list">
 	{% partial 'nav/kruimelpad' %}
 	{% component 'fullblocks' %}
-	{% partial 'page/verzekeringen-all' %}
+	{% component 'verzekeringen' %}
 </div>
