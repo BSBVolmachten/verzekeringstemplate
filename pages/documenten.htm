@@ -14,9 +14,23 @@ robot_follow = "follow"
 [fullblocks]
 
 [documenten]
+privateCheck = 1
+businessCheck = 1
+otherCheck = 1
 ==
 <div class="page-content home-page-1">
 	{% partial 'nav/kruimelpad' %}
 	{% component 'fullblocks' %}
-	{% component 'documenten' %}
+    <section class="about about-layout">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="heading">
+                        <h3 class="heading-section">{{ this.page.title }}</h3>
+                    </div>
+                    {% component 'documenten' %}
+                </div>
+            </div>
+        </div>
+    </section>
 </div>
