@@ -1,0 +1,26 @@
+title = "Fout!"
+url = "/error"
+layout = "default"
+description = "Foutmelding Pagina"
+meta_title = "Fout"
+meta_description = ""
+is_hidden = 0
+seo_keywords = ""
+robot_index = "index"
+robot_follow = "follow"
+
+[viewBag]
+==
+<div class="page-content about-page">
+    {% partial 'nav/kruimelpad' %}
+    <section class="call-to-action call-to-action-layout style-3 bg-parallax-style-1">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="call-to-action-block">
+                <h4 class="call-to-action-content" style="margin-bottom: 40px;">Er is iets foutgegaan bij het laden van de website.
+                    <br/><span style="font-size: 190px;">:(</span></h4>
+                <a href="{{ 'home'|page }}" class="au-btn au-btn-orange">Terug naar homepagina</a>
+            </div>
+        </div>
+    </section>
+</div>
